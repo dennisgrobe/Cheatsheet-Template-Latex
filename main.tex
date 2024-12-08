@@ -1,0 +1,34 @@
+%! Author = dennisgrobe
+%! Date = 17.11.2023
+
+% Document
+% Reference: https://tex.stackexchange.com/questions/8827/preparing-cheat-sheets/8915
+
+% Include preamble.tex to import settings and packages.
+\input{preamble.tex}
+
+    \raggedright
+
+% Font size.
+\tiny
+
+% Specifying number of columns.
+% Asterisk "*" here to force the left-most column to fill first, then the next, etc.
+% (Otherwise, all columns would fill down "equally".
+\begin{multicols}{4}
+
+% Can play around with these as desired.  Default all 0.25
+\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{0.25pt}
+\setlength{\postmulticols}{0.25pt}
+\setlength{\multicolsep}{0.25pt}
+\setlength{\columnsep}{0.25pt}
+≤
+% Include main-content.tex to add the main content.
+\input{content}
+
+% `\end` statements to match the `\begin`s.
+\end{multicols}
+
+% End the document.
+\end{document}

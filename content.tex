@@ -1,0 +1,280 @@
+\begin{titleboxchi}{Static games of complete information}
+    
+    \begin{definition}{Complete Information}
+        Players know all relevant information, other than the strategies selected by other players, at the time they
+        make their choices
+    \end{definition}
+    
+    \begin{definition}{normal-form game}
+        
+        
+        - Players: $i \in\{1, \ldots, n\}$
+        
+        - Strategies:$s_{i} \in S_{i}=\left[\underline{s}_{i}, \bar{s}_{i}\right] \qquad
+        \underbrace{S=\left\{S_{1}, \ldots, S_{n}\right\}}_{\text{strategy spaces}}$
+        
+        - Payoffs: $u_{i}\left(s_{i}, \ldots, s_{n}\right)$
+        
+        %The normal-form representation of an n-player game specifies the players' strategy spaces $S_{1}, \ldots,
+        %S_{n}$ and their payoff functions $u_{1}, \ldots, u_{n}$.
+        
+        We denote this game by $$G=\left\{S_{1}, \ldots, S_{n} ; u_{1}, \ldots, u_{n}\right\}$$
+    
+    \end
+    {definition}
+    
+    \tcbsubtitle{Solution Concepts}
+    
+    Prediction $\leftarrow$ Solution Concept $\leftarrow$ Assumptions
+    
+    \begin{definition}{Dominance}
+        In the normal-form game $G=\left\{S_{1}, \ldots, S_{n} ; u_{1}, \ldots, u_{n}\right\}$, let $s_{i}^{\prime}$ and
+        $s_{i}^{\prime \prime}$ be feasible strategies for player $i$ (i.e.,
+        $s_{i}^{\prime}, s_{i}^{\prime \prime} \in S_{i}$ ). Strategy $s_{i}^{\prime}$ is weakly dominated by strategy
+        $s_{i}^{\prime \prime}$ if for each feasible combination of the other players' strategies, $i^{\prime}$
+        's payoff from playing $s_{i}^{\prime}$ is weakly less than $i^{\prime}$ s payoff from playing
+        $s_{i}^{\prime \prime}$ :
+        
+        $$
+        u_{i}\left(\ldots, s_{i-1}, s_{i}^{\prime}, s_{i+1}, \ldots\right) \leq u_{i}
+        \left(\ldots, s_{i-1}, s_{i}^{\prime \prime}, s_{i+1}, \ldots\right)
+        $$
+        
+        for each $\left(s_{1}, \ldots, s_{i-1}, s_{i+1}, \ldots, s_{n}\right)$
+        that can be constructed from the other players' strategy spaces $S_{1}, \ldots, S_{i-1}, S_{i+1}, \ldots, S_{n}$
+        , and with at least one comparison involving a strict inequality.
+    
+    \end{definition}
+    
+    \begin{definition}{Iterated Dominance}
+        - often incorrect
+        
+        - often fails to yield any predictions
+        
+        \textbf{We need stronger solution concepts!}
+    \end{definition}
+    
+    \begin{concept}{Nash Equilibrium}
+        - Outcomes that are \textbf{self-reinforcing}
+        in that no payoff-maximizing player would unilaterally deviate from such
+        an outcome.
+        
+        - Nash equilibria occur when players' best responses coincide at $\left(s_{1}^{*}, \ldots, s_{n}^{*}\right)$
+        
+        \begin{assumption}{Assumptions}
+            - Players best respond to their beliefs about other player's strategies
+            
+            - Players hold correct beliefs about other players' strategies
+        \end{assumption}
+        
+        \begin{definition}{Definition of a Nash Equilibrium}
+            In the $n$-player normal-form game $G=$ $\left\{S_{1}, \ldots, S_{n} ; u_{1}, \ldots, u_{n}\right\}$
+            , the strategies $\left(s_{1}^{*}, \ldots, s_{n}^{*}\right)$ are a Nash equilibrium if, for each player
+            $i, s_{i}^{*}$ is (at least tied for) player $i$ 's best response to the strategies specified for the $n-1$
+            other players,
+            
+            \[
+                \begin{aligned}
+                    & \left(s_{1}^{*}, \ldots, s_{i-1}^{*}, s_{i+1}^{*}, \ldots, s_{n}^{*}\right): \\
+                    & u_{i}\left(\ldots, s_{i-1}^{*}, s_{i}^{*}, s_{i+1}^{*}, \ldots\right) \geq u_{i}
+                    \left(\ldots, s_{i-1}^{*}, s_{i}, s_{i+1}^{*}, \ldots\right)
+                \end{aligned}
+            \]
+            
+            for every feasible strategy $s_{i}$ in $S_{i}$; that is, $s_{i}^{*}$ solves
+            
+            \[
+                \max _{s_{i} \in S_{i}} u_{i}
+                \left(s_{1}^{*}, \ldots, s_{i-1}^{*}, s_{i}, s_{i+1}^{*}, \ldots, s_{n}^{*}\right)
+            \]
+        \end{definition}
+        
+        \begin{proposition}{Existence of NE}
+            - For any finite game - a game with finite $n$ and $S_{i}$
+            - there exists a Nash equilibrium (Nash, 1950) . . . but perhaps more than one.
+        \end{proposition}
+    
+    \end{concept}
+    
+    \tcbsubtitle{Mixed-strategy play}
+    
+    Extend the notion of players' strategies to include probabilistic mixtures over their available actions; this
+    reflects uncertainty over what action an individual will play
+    
+    \begin{definition}{Mixed Stratey (Discrete)}
+        - A mixed strategy is then a probability distribution over a player's available pure strategies
+        
+        -In the normal form game $G=\left\{S_{1}, \ldots, S_{n} ; u_{1}, \ldots, u_{n}\right\}$, suppose
+        $\left\{S_{i}=s_{i 1}, \ldots, s_{i K}\right\}$. Then a mixed strategy for player $i$
+        is a probability distribution $\left\{p_{i}=p_{i 1}, \ldots, p_{i K}\right\}$, where $0 \leq p_{i k} \leq 1$ for
+        $k=$ $1, \ldots, K$ and $p_{i 1}+\ldots+p_{i K}=1$.
+    \end{definition}
+    
+    \begin{definition}{Mixed Stratey (Continuous)}
+        In the normal form game $G=\left\{S_{1}, \ldots, S_{n} ; u_{1}, \ldots, u_{n}\right\}$,
+        suppose $\left\{s_{i} \in S_{i}=\left[s_{i}^{L}, s_{i}^{H}\right]\right\}$. Then a mixed strategy for player $i$
+        is a probability distribution, $p\left(s_{i}\right)$, where
+        $0 \leq \int_{s_{i}^{\prime}}^{s_{i}^{\prime \prime}} p\left(s_{i}\right) \leq 1$ for all
+        $s_{i}^{\prime}, s_{i}^{\prime \prime} \in$ $\left[s_{i}^{L}, s_{i}^{H}\right]$ and
+        $\int_{s_{i}^{L}}^{s_{i}^{H}} p\left(s_{i}\right)=1$.
+    \end{definition}
+    
+    \begin{definition}{Mixed-Strategy Nash Equilibrium}
+        In the two-player normal-form game $G=\left\{S_{1}, S_{2}, u_{1}, u_{2}\right\}$, the mixed strategies (
+        $p_{1}^{*}, p_{2}^{*}$
+        ) are a Nash equilibrium if each player's mixed strategy is a best response to the other players' mixed
+        strategy.
+    \end{definition}
+    
+    \begin{proposition}{Existence of Nash equilibria in 2x2 games}
+        In the n-player normal form game $G=$ $\left\{S_{1}, \ldots, S_{n} ; u_{1}, \ldots, u_{n}\right\}$, if $n$
+        is finite and $S_{i}$ is finite for every $i$
+        then there exists at least one Nash equilibrium, possibly involving mixed strategies.
+        
+        
+        - There always exists a (mixed-) strategy combination such that
+        $v_{i}\left(p_{i}^{*}, p_{-i}^{*}\right) \geq v_{i}\left(p_{i}, p_{-i}^{*}\right)$ for all $p_{i}$ and where
+        $p_{-i}^{*}$ represents the (equilibrium) mixed strategies of all other players
+        
+        - A game that is not finite may not have a Nash equilibrium
+    
+    \end{proposition}
+
+\end{titleboxchi}
+
+\begin{titleboxchi}{Dynamic games of complete information}
+    - \textbf{Add timing} as an important feature of a game
+    
+    - Once we add time as a factor, \textbf{information becomes important}
+    
+    \begin{definition}{Perfect information}
+        - All earlier moves observed (e.g., chess, bargaining)
+        
+        <-> at each move in the game the player with the move knows the full history of the play of the game so far.
+    \end{definition}
+    
+    \begin{definition}{Imperfect information}
+        - Some earlier moves unobserved by some players (e.g., hide-and-seek, R\&D races)
+        
+        - Simultaneous moves are always unobserved.
+        
+        --> Under imperfect information, we must also define the information that players have at different points in
+        time
+    
+    \end{definition}
+    
+    \begin{definition}{Dynamic Game - Definition}
+        - A dynamic game includes all the elements that we have previously noted are necessary to define a game:
+        
+        - Players: $i \in\{1, \ldots, n\}$
+        
+        - $
+        s_{i} \in S_{i}=\left\{\left\{a_{i 11}, \ldots, a_{i 1 k_{i 1}}\right\}, \ldots,\left\{a_{i T 1}, \ldots, a_
+            {i T k_{i T}}\right\}\right\}$
+        
+        - Payoff: $u_{i}\left(s_{i}, \ldots, s_{n}\right)$
+        
+        - The \textbf{additional element is time} ( $t \in\{1, \ldots, T\})$
+        
+        %       - A player may have actions in all periods or only some (i.e., it may be that
+        %       $S_{i}=\{\{\varnothing\}\}$
+        %       for some $i$ and $t$ )
+        
+        - Players' actions in a period can be conditional on own and other players' prior actions,
+        or \textbf{histories of play}
+        $\left(a_{i t}=a_{i t}\left(h_{t}\right)\right.$ )
+        
+        \begin{proposition}{Defining a dynamic game (perfect information)}
+            - At $t=1$ Player 1 chooses $s_{1} \in S_{1}=\left\{L_{1}, R_{1}\right\}$
+            
+            - At $t=2$ Player 2 chooses $s_{2} \in S_{2}=\left\{L_{2}, R_{2}\right\}$
+            
+            \includegraphics{markdown/assets/image_f8b52220becfbec8f978f7a14931b387}
+        \end{proposition}
+        
+        \begin{proposition}{Defining a dynamic game (imperfect information)}
+            - At $t=1$ Player 1 chooses $s_{1} \in S_{1}=\left\{L_{1}, R_{1}\right\}$
+            
+            - At $t=2$ Player 2 chooses $s_{2} \in S_{2}=\left\{L_{2}, R_{2}\right\}$
+            
+            In this case, there are no independent subgames to the dynamic game
+            
+            \includegraphics{markdown/assets/image_fd820f624a96115c0c5282917f91b245}
+        \end{proposition}
+    \end{definition}
+    
+    \begin{proposition}{Extensive form representations}
+        
+        %- A dynamic game can be easily represented in extensive form
+        
+        - An \textbf{information set}
+        represents all the nodes between which the player making a move cannot distinguish
+        
+        - \textbf{Any} game can be represented in either extensive or normal form
+        
+        \includegraphics{markdown/assets/image_87d18715a76266858df1fea65fd6c8bc}
+        
+        \begin{definition}{extensive form-representation of a game - Definition}
+            The extensive form-representation of a game specifies:
+            
+            1.
+            the players in the game;
+            
+            2.
+            the actions available to each player, specifically:
+            
+            a.
+            \textbf{when} each player has the move,
+            
+            b.
+            \textbf{what} each player can do at each of his or her opportunities to move,
+            
+            c.
+            \textbf{what each player knows} at each of his or her opportunities to move, and
+            
+            3.
+            the payoff received by each player for each combination of moves that could be chosen by the players.
+        \end{definition}
+    \end{proposition}
+    
+    \begin{definition}{Subgames - Definition}
+        A subgame in an extensive-form game
+        
+        \textbf{a)} begins at a decision node $n$
+        that is a \textbf{singleton information set} (but is not the game's first decision node),
+        
+        \textbf{ b)} includes all the decision and terminal nodes following $n$
+        in the game tree (but no nodes that do not follow
+        $n$ ), and
+        
+        \textbf{c)} \textbf{does not cut any information sets} (i.e., if a decision node $n^{\prime}$ follows $n$
+        in the game tree, then all other nodes in the information set containing $n^{\prime}$ must also follow $n$
+        , and so must be included in the subgame).
+
+%        Subgames are important because they allow us to analyze (and predict what will happen in)
+%        each subgame separately from the complete game
+    
+    \end{definition}
+    
+     \begin{titleboxnarrow}{Credibility - Central issue in all dynamic games}
+    
+    \end{titleboxnarrow}
+    
+    \begin{definition}{Backwards Induction}
+        \begin{itemize}
+            \item A dynamic game of complete and perfect information can be solved if we assume that every player will play a best response at every stage of the game, and this is common knowledge among all players
+        \end{itemize}
+    
+    The backwards-induction outcome does not involve noncredible threats.
+        
+    \end{definition}
+    
+    \begin{example}{Games Examples}
+    
+    \end{example}
+    
+    \begin{assumption}{Yeaj}
+    
+    \end{assumption}
+    
+\end{titleboxchi}

@@ -1,0 +1,384 @@
+\documentclass[6pt,landscape]{article}
+%\usepackage{lmodern}
+\DeclareMathSizes{5}{4}{3}{3}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape, a4paper]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,overpic}
+\usepackage{graphicx}
+\usepackage{enumitem}% http://ctan.org/pkg/enumitem
+\setlist[itemize]{noitemsep, topsep=0pt, left=0pt..1em}
+\graphicspath{ {./assets/} }
+\usepackage{hyperref}
+\usepackage{settobox} % added by Dennis Grobe
+\usepackage{tcolorbox} % added by Dennis Grobe
+\tcbuselibrary{breakable}
+\tcbuselibrary{raster}
+\tcbuselibrary{skins}
+\usepackage{tikz} % to draw the smiley
+% \usepackage[dvipsnames]{xcolor}
+\newtcolorbox{mybox}{colback=red!5!white,colframe=red!75!black} % added by Dennis Grobe
+\newtcolorbox{gbox}{colback=green!5!white,colframe=green!75!black} % added by Dennis Grobe
+\newtcolorbox{titlebox}[1]{colback=red!5!white,colframe=red!75!black,breakable,fonttitle=\footnotesize\bfseries,title
+    =#1, left*=2.5mm,pad at break=2mm, break at=-\baselineskip/0pt, height fixed for= middle}
+\newtcolorbox{titleboxgreen}[1]{colback=green!5!white,colframe=green!50!black,breakable,fonttitle=
+    \footnotesize\bfseries,title=#1, left*=2.5mm, toptitle=-0.5mm,
+    subtitle style={boxrule=0.4pt,
+    colback=yellow!50!red!25!white}}
+\newtcolorbox{titleboxgreennarrow}[1]{colback=green!5!white,colframe=green!50!black,breakable,fonttitle=
+    \footnotesize\bfseries,title=#1, left*=1mm}
+
+\tcbset{smiley/.style={watermark tikz ={%
+    \path[fill=yellow,draw=yellow!75!red] (0,0) circle (1cm);
+    \fill[red] (45:5mm) circle (1mm);
+    \fill[red] (135:5mm) circle (1mm);
+    \draw[line width=1mm,red] (215:5mm) arc (215:325:5mm);}}}
+
+\newtcolorbox{titleboxchi}[1]{
+    colback=magenta!5!white,
+    colframe=magenta!75!black,
+    colbacktitle=magenta!75!red!50!white,
+    coltitle=red!25!black,
+    fonttitle=\bfseries,
+    left*=1mm,
+    ,right*=1mm,
+    before skip=0pt, % Space before the box
+    after skip=0pt,  % Space after the box
+    breakable=true,
+    subtitle style={boxrule=0.4pt,
+    colback=magenta!50!red!25!white},
+    title=#1,
+    fit basedim=2pt,
+    fontupper=\tiny     %\fontsize{4}{5}\selectfont,
+%watermark color=red,watermark opacity=0.25,
+%watermark text=My Watermark,
+%smiley
+}
+
+\newtcolorbox{titleboxchi2}[1]{
+    colback=magenta!5!white,
+    colframe=magenta!75!black,
+    colbacktitle=magenta!75!purple!50!white,
+    coltitle=red!25!black,
+    fonttitle=\bfseries,
+    left*=1mm,
+    ,right*=1mm,
+    before skip=0pt, % Space before the box
+    after skip=0pt,  % Space after the box
+    breakable=true,
+    subtitle style={boxrule=0.4pt,
+    colback=magenta!50!red!25!white},
+    title=#1,
+    fit basedim=2pt,
+    fontupper=\tiny     %\fontsize{4}{5}\selectfont,
+%watermark color=red,watermark opacity=0.25,
+%watermark text=My Watermark,
+%smiley
+}
+
+\newtcolorbox{definition}[1]{
+    colback=green!5!white,
+    colframe=green!30!black!60!white,
+    left*=1mm,
+    ,right*=1mm,
+    bottom=1mm,
+    top=1mm,
+    breakable,
+    before skip=1pt, % Space before the box
+    after skip=0pt,  % Space after the box
+    subtitle style={boxrule=0.4pt,
+    colback=yellow!50!red!25!white},
+    coltitle=black,
+%    fonttitle=\bfseries,
+    title=#1,
+    boxsep=0mm,
+}
+
+\newtcolorbox{theorem}[1]{
+    colback=orange!5!white,
+    colframe=orange!50!black!60!white,
+    left*=1mm,
+    ,right*=1mm,
+    bottom=1mm,
+    top=1mm,
+    breakable,
+    before skip=0pt, % Space before the box
+    after skip=0pt,  % Space after the box
+    subtitle style={boxrule=0.4pt,
+    colback=yellow!50!red!25!white},
+%title=#1,
+    boxsep=0mm}
+
+\newtcolorbox{proposition}[1]{
+    colback=blue!5!white,
+    colframe=blue!30!black!70!white,
+    left*=1mm,
+    ,right*=1mm,
+    bottom=1mm,
+    top=1mm,
+    breakable,
+    before skip=1pt, % Space before the box
+    after skip=1pt,  % Space after the box
+    subtitle style={boxrule=0.4pt,
+    colback=yellow!50!red!25!white},
+    title=#1,
+    boxsep=0mm}
+
+\newtcolorbox{example}[1]{
+    colback=blue!5!white,
+    colframe=blue!30!black!70!black,
+    left*=1mm,
+    ,right*=1mm,
+    bottom=1mm,
+    top=1mm,
+    breakable,
+    before skip=0pt, % Space before the box
+    after skip=0pt,  % Space after the box
+    subtitle style={boxrule=0.4pt,
+    colback=yellow!50!red!25!white},
+%title=#1,
+    boxsep=0mm}
+
+\newtcolorbox{titleboxnarrow}[1]{
+    colback=red!5!white,
+    colframe=red!90!black!80!white,
+    breakable,
+    before skip=1pt, % Space before the box
+    after skip=0pt,  % Space after the box
+    fonttitle=\bfseries,
+    title=#1,
+    left*=1mm,
+    ,right*=1mm,
+    bottom=1mm,
+    top=1mm,
+    boxsep=0mm}
+
+\newtcolorbox{assumption}[1]{
+    colback=blue!5!white,
+    colframe=yellow!50!black!70!white,
+    left*=1mm,
+    ,right*=1mm,
+    bottom=1mm,
+    top=1mm,
+    breakable,
+    before skip=1pt, % Space before the box
+    after skip=1pt,  % Space after the box
+    subtitle style={boxrule=0.4pt,
+    colback=yellow!50!red!25!white},
+    title=#1,
+    boxsep=0mm}
+
+\newtcolorbox{concept}[1]{
+    colback=blue!5!white,
+    colframe=black!50!white,
+    left*=1mm,
+    ,right*=1mm,
+    bottom=1mm,
+    top=1mm,
+    breakable,
+    before skip=1pt, % Space before the box
+    after skip=1pt,  % Space after the box
+    subtitle style={boxrule=0.4pt,
+    colback=yellow!50!red!25!white},
+    title=#1,
+    boxsep=0mm}
+
+\newtcolorbox{derivation}[1]{
+    colback=blue!5!white,
+    colframe=red!50!white,
+    left*=1mm,
+    ,right*=1mm,
+    bottom=1mm,
+    top=1mm,
+    breakable,
+    before skip=1pt, % Space before the box
+    after skip=2pt,  % Space after the box
+    subtitle style={boxrule=0.4pt,
+    colback=yellow!50!red!25!white},
+    title=#1,
+    boxsep=0mm}
+
+% set width of all included graphics
+\setkeys{Gin}{width=6.3cm}
+
+\newcommand{\beginGreenBox}[1]{\begin{titleboxgreen}{#1}}
+\newcommand{\beginBlueBox}[1]{\begin{titleboxchi}{#1}}
+%\newcommand{\endGreenBox}{\end{titleboxgreen}}
+
+% Sets page margins.
+\geometry{top=.2in,left=.2in,right=.2in,bottom=.2in}
+
+% Turns off header and footer.
+\pagestyle{empty}
+
+% Redefine section commands to use less space and have smaller text.
+% (Can change font size if `\tiny` is too small.
+% See http://www.sascha-frank.com/latex-font-size.html as a reference.)
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+{-0.5ex plus -.5ex minus -.2ex}%
+{-0.5\baselineskip}%
+{\normalfont\small\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{1.5mm}%
+{-0.5ex plus -.5ex minus -.2ex}%
+{0.4\baselineskip}%
+{\normalfont\footnotesize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{3mm}%
+{-0.5ex plus -.5ex minus -.2ex}%
+{0.4\baselineskip}%
+{\normalfont\scriptsize\bfseries}}
+\renewcommand{\paragraph}{\@startsection{paragraph}{4}{0mm}%
+{-0.5ex plus -.5ex minus -.2ex}%
+{-0.5\baselineskip}%
+{\normalfont\tiny\bfseries}}
+\makeatother
+
+% No section numbers.
+\setcounter{secnumdepth}{2}
+
+% Minimal paragraph indenting and spacing.
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+% https://stackoverflow.com/questions/40438037/tightlist-error-using-pandoc-with-markdown
+\providecommand{\tightlist}{%
+    \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Set/reduce vertical spacing between display
+\newlength{\myeqskip}  \setlength{\myeqskip}{0pt}
+\AtBeginDocument{%
+    \setlength\abovedisplayskip{\myeqskip}%
+    \setlength\belowdisplayskip{\myeqskip}%
+    \setlength\abovedisplayshortskip{\myeqskip- 2pt} %\setlength\abovedisplayshortskip{\myeqskip-\baselineskip + 1pt}%
+    \setlength\belowdisplayshortskip{\myeqskip+ 0pt}}
+
+% Canonical "init" statement.
+\begin{document}
+
+
+%\documentclass[10pt,landscape]{article}
+%\usepackage{multicol}
+%\usepackage{calc}
+%\usepackage{ifthen}
+%\usepackage[landscape, a4paper]{geometry}
+%\usepackage{amsmath,amsthm,amsfonts,amssymb}
+%\usepackage{color,graphicx,overpic}
+%\usepackage{hyperref}
+%\usepackage{settobox} % added by Dennis Grobe
+%\usepackage{tcolorbox} % added by Dennis Grobe
+%\tcbuselibrary{breakable}
+%\tcbuselibrary{raster}
+%% \usepackage[dvipsnames]{xcolor}
+%\newtcolorbox{mybox}{colback=red!5!white,colframe=red!75!black} % added by Dennis Grobe
+%\newtcolorbox{gbox}{colback=green!5!white,colframe=green!75!black} % added by Dennis Grobe
+%\newtcolorbox{titlebox}[1]{colback=red!5!white,colframe=red!75!black,breakable,fonttitle=\footnotesize\bfseries,
+%title=#1, left*=2.5mm,pad at break=2mm, break at=-\baselineskip/0pt, height fixed for= middle}
+%\newtcolorbox{titleboxgreen}[1]{colback=green!5!white,colframe=green!50!black,breakable,
+%fonttitle=\footnotesize\bfseries,title=#1, left*=2.5mm, toptitle=-0.5mm,
+%subtitle style={boxrule=0.4pt,
+%colback=yellow!50!red!25!white}}
+%\newtcolorbox{titleboxgreennarrow}[1]{colback=green!5!white,colframe=green!50!black,breakable,
+%fonttitle=\footnotesize\bfseries,title=#1, left*=1mm}
+%\newtcolorbox{titleboxnarrow}[1]{colback=red!5!white,colframe=red!75!black,breakable,fonttitle=\bfseries,title=#1,
+%left*=1mm,
+%,right*=1mm,
+%bottom=1mm,
+%top=1mm,
+%boxsep=0mm}
+%
+%\newtcolorbox{titleboxchi}[1]{
+%colback=magenta!5!white,
+%colframe=magenta!75!black,
+%colbacktitle=magenta!50!red,
+%coltitle=red!25!black,
+%fonttitle=\bfseries,
+%left*=1mm,
+%,right*=1mm,
+%breakable,
+%subtitle style={boxrule=0.4pt,
+%colback=magenta!50!red!25!white},
+%title=#1}
+%
+%\newtcolorbox{definition}[1]{
+%colback=green!5!white,
+%colframe=green!30!black!60!white,
+%left*=1mm,
+%,right*=1mm,
+%bottom=1mm,
+%top=1mm,
+%breakable,
+%subtitle style={boxrule=0.4pt,
+%colback=yellow!50!red!25!white},
+%title=#1,
+%boxsep=0mm}
+%
+%\newtcolorbox{derivation}[1]{
+%colback=blue!5!white,
+%colframe=blue!30!black!70!white,
+%left*=1mm,
+%,right*=1mm,
+%bottom=1mm,
+%top=1mm,
+%breakable,
+%subtitle style={boxrule=0.4pt,
+%colback=yellow!50!red!25!white},
+%title=#1,
+%boxsep=0mm}
+%
+%\newcommand{\beginGreenBox}[1]{\begin{titleboxgreen}{#1}}
+%\newcommand{\beginBlueBox}[1]{\begin{titleboxchi}{#1}}
+%%\newcommand{\endGreenBox}{\end{titleboxgreen}}
+%
+%% Sets page margins.
+%\geometry{top=.2in,left=.2in,right=.2in,bottom=.2in}
+%
+%% Turns off header and footer.
+%\pagestyle{empty}
+%
+%% Redefine section commands to use less space and have smaller text.
+%% (Can change font size if `\tiny` is too small.
+%% See http://www.sascha-frank.com/latex-font-size.html as a reference.)
+%\makeatletter
+%\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+%                                {-0.5ex plus -.5ex minus -.2ex}%
+%                                {-0.5\baselineskip}%
+%                                {\normalfont\small\bfseries}}
+%\renewcommand{\subsection}{\@startsection{subsection}{2}{1.5mm}%
+%                                {-0.5ex plus -.5ex minus -.2ex}%
+%                                {0.4\baselineskip}%
+%                                {\normalfont\footnotesize\bfseries}}
+%\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{3mm}%
+%                                {-0.5ex plus -.5ex minus -.2ex}%
+%                                {0.4\baselineskip}%
+%                                {\normalfont\scriptsize\bfseries}}
+%\renewcommand{\paragraph}{\@startsection{paragraph}{4}{0mm}%
+%                                {-0.5ex plus -.5ex minus -.2ex}%
+%                                {-0.5\baselineskip}%
+%                                {\normalfont\tiny\bfseries}}
+%\makeatother
+%
+%% No section numbers.
+%\setcounter{secnumdepth}{2}
+%
+%% Minimal paragraph indenting and spacing.
+%\setlength{\parindent}{0pt}
+%\setlength{\parskip}{0pt plus 0.5ex}
+%
+%% https://stackoverflow.com/questions/40438037/tightlist-error-using-pandoc-with-markdown
+%\providecommand{\tightlist}{%
+%  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+%
+%% Set/reduce vertical spacing between display
+%\newlength{\myeqskip}  \setlength{\myeqskip}{0pt}
+%\AtBeginDocument{%
+%    \setlength\abovedisplayskip{\myeqskip}%
+%    \setlength\belowdisplayskip{\myeqskip}%
+%    \setlength\abovedisplayshortskip{\myeqskip- 2pt} %\setlength\abovedisplayshortskip{\myeqskip-\baselineskip + 1pt}%
+%    \setlength\belowdisplayshortskip{\myeqskip+ 2pt}}
+%
+%% Canonical "init" statement.
+%\begin{document}
+%
+%

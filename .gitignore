@@ -1,0 +1,54 @@
+cat <<EOL > .gitignore
+# LaTeX intermediate files
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.brf
+*.idx
+*.ilg
+*.ind
+
+# Generated files
+*.pdf
+*.dvi
+*.ps
+*.nav
+*.snm
+*.vrb
+
+# BibTeX files
+*.bcf
+*.run.xml
+
+# Temporary files
+*.tmp
+*.bak
+*.sav
+
+# Editor-specific files
+*~
+*.swp
+.idea/
+.vscode/
+
+# PyCharm-specific files
+.idea/
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.env/
+.envrc
+
+# Logs
+*.log
+*.gz
+EOL
